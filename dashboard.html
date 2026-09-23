@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Education Library</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <div class="sidebar-title">
+                Menu
+            </div>
+
+            <button
+                class="close-button"
+                id="closeButton"
+                aria-label="Close menu">
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="sidebar-buttons">
+
+            <a class="side-button" href="index.html">
+                ⌂ Home
+            </a>
+
+            <a class="side-button" href="dashboard.html">
+                📊 Education Board
+            </a>
+
+            <a class="side-button" href="#">
+                👤 Your Profile
+            </a>
+
+            <a class="side-button" href="pp.html">
+                🛡️ Privacy & Policy
+            </a>
+
+            <a class="side-button" href="settings.html">
+                ⚙️ Settings
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- OVERLAY -->
+
+    <div
+        class="overlay"
+        id="overlay">
+    </div>
+
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <button
+            class="menu-button"
+            id="menuButton"
+            aria-label="Open menu"
+            aria-expanded="false">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <div class="logo">
+            Education<span>Web</span>
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="container">
+
+        <section class="hero">
+
+            <span class="hero-label">
+                Knowledge Library
+            </span>
+
+            <h1>
+                Explore <span>Science.</span>
+            </h1>
+
+            <p>
+                A clean and fast educational library for exploring
+                subjects, concepts and knowledge.
+            </p>
+
+        </section>
+
+
+        <!-- SEARCH -->
+
+        <div class="toolbar">
+
+            <div class="search-box">
+
+                <span class="search-icon">⌕</span>
+
+                <input
+                    id="search"
+                    type="search"
+                    placeholder="Search a subject..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+            <div class="count" id="count">
+                50 Subjects
+            </div>
+
+        </div>
+
+
+        <!-- SUBJECT HEADER -->
+
+        <div class="section-header">
+
+            <h2 class="section-title">
+                Subjects
+            </h2>
+
+            <span class="section-subtitle">
+                Select a subject to continue
+            </span>
+
+        </div>
+
+
+        <!-- SUBJECTS -->
+
+        <div class="subjects" id="subjects"></div>
+
+
+        <div class="no-result" id="noResult">
+
+            <strong>No subject found</strong>
+
+            Try another search term.
+
+        </div>
+
+    </main>
+
+
+    <footer>
+        Education Library • Built for learning
+    </footer>
+
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+</html>

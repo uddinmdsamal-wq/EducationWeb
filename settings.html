@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="EducationWeb Settings">
+    <meta name="author" content="Education Web">
+
+    <title>Settings | EducationWeb</title>
+
+    <link rel="stylesheet" href="css/settings.css">
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-header">
+        <div class="sidebar-title">Settings</div>
+
+        <button
+            class="close-button"
+            id="closeButton"
+            aria-label="Close menu">
+            ×
+        </button>
+    </div>
+
+    <div class="sidebar-buttons">
+
+        <a class="side-button" href="index.html">
+            ⌂ Home
+        </a>
+
+        <a class="side-button" href="dashboard.html">
+            📊 Education Board
+        </a>
+
+        <a class="side-button" href="#">
+            👤 Your Profile
+        </a>
+
+        <a class="side-button" href="pp.html">
+            🛡️ Privacy & Policy
+        </a>
+
+        <a class="side-button active" href="settings.html">
+            ⚙️ Settings
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= OVERLAY ================= -->
+
+<div class="overlay" id="overlay"></div>
+
+
+<!-- ================= TOP BAR ================= -->
+
+<header class="topbar">
+
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Open menu"
+        aria-expanded="false">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+    <div class="logo">
+        Education<span>Web</span>
+    </div>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="settings-container">
+
+
+    <!-- HERO -->
+
+    <section class="settings-hero">
+
+        <div class="settings-icon">
+            ⚙️
+        </div>
+
+        <div>
+            <div class="hero-label">
+                CONTROL CENTER
+            </div>
+
+            <h1>
+                Settings
+            </h1>
+
+            <p>
+                Customize your EducationWeb experience,
+                appearance, reading preferences and interface.
+            </p>
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= APPEARANCE ================= -->
+
+    <section class="settings-section">
+
+        <div class="section-heading">
+
+            <div class="section-icon">
+                🎨
+            </div>
+
+            <div>
+                <h2>Appearance</h2>
+                <p>Change how EducationWeb looks.</p>
+            </div>
+
+        </div>
+
+
+        <!-- Theme -->
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>Theme</h3>
+
+                <p>
+                    Choose the appearance of the website.
+                </p>
+
+            </div>
+
+            <select id="themeSelect">
+
+                <option value="dark">
+                    Dark
+                </option>
+
+                <option value="light">
+                    Light
+                </option>
+
+                <option value="system">
+                    System
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Accent -->
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>Accent Color</h3>
+
+                <p>
+                    Choose the primary interface color.
+                </p>
+
+            </div>
+
+            <select id="accentSelect">
+
+                <option value="blue">
+                    Azure Blue
+                </option>
+
+                <option value="purple">
+                    Purple
+                </option>
+
+                <option value="green">
+                    Green
+                </option>
+
+                <option value="orange">
+                    Orange
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Compact Mode -->
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>Compact Interface</h3>
+
+                <p>
+                    Reduce spacing between interface elements.
+                </p>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="compactMode">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <!-- Animations -->
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>Animations</h3>
+
+                <p>
+                    Enable interface transitions and animations.
+                </p>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="animations"
+                    checked>
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= TEXT ================= -->
+
+    <section class="settings-section">
+
+        <div class="section-heading">
+
+            <div class="section-icon">
+                🔤
+            </div>
+
+            <div>
+
+                <h2>Text & Reading</h2>
+
+                <p>
+                    Adjust text for comfortable reading.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Text Zoom -->
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>Text Size</h3>
+
+                <p>
+                    Increase or decrease website text size.
+                </p>
+
+            </div>
+
+            <div class="zoom-controls">
+
+                <button id="textDecrease">
+                    A−
+                </button>
+
+                <span id="textSizeValue">
+                    100%
+                </span>
+
+                <button id="textIncrease">
+                    A+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Line Height -->
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>Reading Spacing</h3>
+
+                <p>
+                    Adjust the space between lines of text.
+                </p>
+
+            </div>
+
+            <select id="lineHeight">
+
+                <option value="normal">
+                    Normal
+                </option>
+
+                <option value="comfortable">
+                    Comfortable
+                </option>
+
+                <option value="large">
+                    Large
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Font -->
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>Font Style</h3>
+
+                <p>
+                    Select your preferred reading font.
+                </p>
+
+            </div>
+
+            <select id="fontSelect">
+
+                <option value="system">
+                    System
+                </option>
+
+                <option value="serif">
+                    Serif
+                </option>
+
+                <option value="mono">
+                    Monospace
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= READING ================= -->
+
+    <section class="settings-section">
+
+        <div class="section-heading">
+
+            <div class="section-icon">
+                📖
+            </div>
+
+            <div>
+
+                <h2>Reading Experience</h2>
+
+                <p>
+                    Configure your learning environment.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>Focus Mode</h3>
+
+                <p>
+                    Reduce visual distractions while studying.
+                </p>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="focusMode">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>Reading Width</h3>
+
+                <p>
+                    Control the maximum width of reading content.
+                </p>
+
+            </div>
+
+            <select id="readingWidth">
+
+                <option value="normal">
+                    Normal
+                </option>
+
+                <option value="wide">
+                    Wide
+                </option>
+
+                <option value="narrow">
+                    Narrow
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>Auto Scroll</h3>
+
+                <p>
+                    Enable automatic page scrolling where supported.
+                </p>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="autoScroll">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= NOTIFICATIONS ================= -->
+
+    <section class="settings-section">
+
+        <div class="section-heading">
+
+            <div class="section-icon">
+                🔔
+            </div>
+
+            <div>
+
+                <h2>Notifications</h2>
+
+                <p>
+                    Control website notifications.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>Study Reminders</h3>
+
+                <p>
+                    Allow study reminder notifications.
+                </p>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="studyReminder">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>New Content</h3>
+
+                <p>
+                    Notify when new educational content is available.
+                </p>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="newContent">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>Sound Effects</h3>
+
+                <p>
+                    Enable interface sound effects.
+                </p>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="soundEffects">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= ACCESSIBILITY ================= -->
+
+    <section class="settings-section">
+
+        <div class="section-heading">
+
+            <div class="section-icon">
+                ♿
+            </div>
+
+            <div>
+
+                <h2>Accessibility</h2>
+
+                <p>
+                    Make the interface easier to use.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>High Contrast</h3>
+
+                <p>
+                    Increase contrast between text and background.
+                </p>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="highContrast">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>Reduce Motion</h3>
+
+                <p>
+                    Reduce interface animations and transitions.
+                </p>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="reduceMotion">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>Large Buttons</h3>
+
+                <p>
+                    Increase the size of interactive controls.
+                </p>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="largeButtons">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <section class="settings-section">
+
+        <div class="section-heading">
+
+            <div class="section-icon">
+                📊
+            </div>
+
+            <div>
+
+                <h2>Dashboard</h2>
+
+                <p>
+                    Customize your education dashboard.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>Show Subject Count</h3>
+
+                <p>
+                    Display the total number of subjects.
+                </p>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="subjectCount"
+                    checked>
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>Remember Search</h3>
+
+                <p>
+                    Remember your last dashboard search.
+                </p>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="rememberSearch"
+                    checked>
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= PRIVACY ================= -->
+
+    <section class="settings-section">
+
+        <div class="section-heading">
+
+            <div class="section-icon">
+                🔒
+            </div>
+
+            <div>
+
+                <h2>Privacy</h2>
+
+                <p>
+                    Manage local preferences and privacy options.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>Save Preferences</h3>
+
+                <p>
+                    Save your settings locally on this device.
+                </p>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="savePreferences"
+                    checked>
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>Local Storage</h3>
+
+                <p>
+                    Use browser storage for interface preferences.
+                </p>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="localStorage"
+                    checked>
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= LANGUAGE ================= -->
+
+    <section class="settings-section">
+
+        <div class="section-heading">
+
+            <div class="section-icon">
+                🌐
+            </div>
+
+            <div>
+
+                <h2>Language</h2>
+
+                <p>
+                    Choose the interface language.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <h3>Interface Language</h3>
+
+                <p>
+                    Select the language used by EducationWeb.
+                </p>
+
+            </div>
+
+            <select id="languageSelect">
+
+                <option value="en">
+                    English
+                </option>
+
+                <option value="bn">
+                    বাংলা
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= RESET ================= -->
+
+    <section class="danger-section">
+
+        <div>
+
+            <h2>Reset Settings</h2>
+
+            <p>
+                Restore all settings to their default values.
+                This only affects preferences stored by this page.
+            </p>
+
+        </div>
+
+        <button
+            class="reset-button"
+            id="resetSettings">
+
+            Reset Settings
+
+        </button>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="settings-footer">
+
+        <strong>EducationWeb Settings</strong>
+
+        <span>
+            Preferences are stored locally when enabled.
+        </span>
+
+    </footer>
+
+
+</main>
+
+
+<script src="js/settings.js"></script>
+
+</body>
+</html>

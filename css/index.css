@@ -1,0 +1,806 @@
+html, body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    background-color: #000;
+    text-align: center;
+    touch-action: pan-x pan-y;
+    color: white;
+}
+
+* {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.head {
+    font-size: 60px;
+    margin-top: 0.0cm;
+    background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet, red);
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rainbow 4s linear infinite;
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 400% 50%;
+    }
+}
+
+/* ============================= */
+/* 🐉 BLUE DRAGON RAINBOW BUTTON */
+/* ============================= */
+
+.dragon-btn {
+    height: 100px;
+    width: 80%;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    padding: 14px 30px;
+    border: 2px solid transparent;
+    border-radius: 14px;
+
+    color: white;
+    background:
+        linear-gradient(#071a46, #071a46) padding-box,
+        linear-gradient(
+            90deg,
+            #00b7ff,
+            #246bff,
+            #7b2cff,
+            #ff00d4,
+            #00eaff,
+            #00b7ff
+        ) border-box;
+
+    background-size: 100% 100%, 300% 100%;
+
+    font-size: 45px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 8px rgba(0, 140, 255, 0.7),
+        0 0 20px rgba(0, 100, 255, 0.35);
+
+    animation:
+        dragonBorder 3s linear infinite,
+        dragonGlow 2.5s ease-in-out infinite;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
+/* 🌈 Animated Border */
+@keyframes dragonBorder {
+    0% {
+        background-position: 0% 0%, 0% 50%;
+    }
+
+    50% {
+        background-position: 0% 0%, 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 0%, 0% 50%;
+    }
+}
+
+
+/* 🔵 Dragon-like Blue Energy Glow */
+@keyframes dragonGlow {
+    0%, 100% {
+        box-shadow:
+            0 0 7px #008cff,
+            0 0 18px rgba(0, 100, 255, 0.35);
+    }
+
+    50% {
+        box-shadow:
+            0 0 12px #00d9ff,
+            0 0 30px rgba(0, 120, 255, 0.65),
+            0 0 45px rgba(100, 0, 255, 0.25);
+    }
+}
+
+
+/* ✨ Animated Text */
+.dragon-btn span {
+    position: relative;
+    z-index: 3;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #55eaff,
+        #ffffff,
+        #b86cff,
+        #ffffff
+    );
+
+    background-size: 300% 100%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    animation: dragonText 2.5s linear infinite;
+}
+
+
+@keyframes dragonText {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+
+/* 🐉 Energy moving inside button */
+.dragon-btn::before {
+    content: "";
+
+    position: absolute;
+    inset: -60%;
+
+    background: conic-gradient(
+        transparent,
+        rgba(0, 210, 255, 0.15),
+        rgba(0, 100, 255, 0.35),
+        rgba(170, 0, 255, 0.2),
+        transparent
+    );
+
+    filter: blur(8px);
+
+    animation: dragonEnergy 2.2s linear infinite;
+
+    z-index: -1;
+}
+
+
+@keyframes dragonEnergy {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* 🌬️ CLICK WAVE */
+.dragon-btn::after {
+    content: "";
+
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    left: var(--click-x, 50%);
+    top: var(--click-y, 50%);
+
+    transform: translate(-50%, -50%) scale(0);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,0.9) 0%,
+            rgba(0,220,255,0.55) 25%,
+            rgba(80,100,255,0.3) 45%,
+            transparent 70%
+        );
+
+    filter: blur(2px);
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+
+/* 💥 Click করলে wave ছড়াবে */
+.dragon-btn.clicked::after {
+    animation: dragonWave 0.65s cubic-bezier(.1,.7,.2,1);
+}
+
+
+@keyframes dragonWave {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(15);
+        opacity: 0;
+    }
+}
+
+
+/* ✨ Click-এর সময় button glow */
+.dragon-btn.clicked {
+    animation:
+        dragonBorder 3s linear infinite,
+        clickGlow 0.7s ease-out;
+}
+
+
+@keyframes clickGlow {
+    0% {
+        transform: scale(1);
+        box-shadow:
+            0 0 10px #00c8ff;
+    }
+
+    30% {
+        transform: scale(0.97);
+        box-shadow:
+            0 0 25px #00eaff,
+            0 0 55px #008cff,
+            0 0 80px #743cff;
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow:
+            0 0 10px #008cff;
+    }
+}
+
+
+/* 🖱️ Hover */
+.dragon-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+}
+
+
+/* 🖱️ Press */
+.dragon-btn:active {
+    transform: scale(0.96);
+}
+
+p{
+    font-size: 30px;
+    margin-top: 18cm;
+}
+
+.original_add {
+    position: relative;
+    display: inline-block;
+
+    /* Dark Blue → Blue animated text */
+    background: linear-gradient(
+        90deg,
+        #061b4f,
+        #0066ff,
+        #00c8ff,
+        #0066ff,
+        #061b4f
+    );
+
+    background-size: 300% 100%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    /* Fade + 0px → 50px animation */
+    opacity: 0;
+    transform: scale(0);
+
+    animation:
+        textAppear 1.2s cubic-bezier(.16,1,.3,1) forwards,
+        blueFlow 4s linear infinite;
+
+    overflow: hidden;
+}
+
+
+/* ✨ 0px → 50px + Fade In */
+@keyframes textAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* 🔵 Dark Blue + Blue চলতে থাকবে */
+@keyframes blueFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+
+/* 🌈 Rainbow Light Sweep */
+p::after {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+
+    width: 60%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 0, 0, 0.35),
+        rgba(255, 200, 0, 0.55),
+        rgba(0, 255, 180, 0.55),
+        rgba(0, 140, 255, 0.6),
+        rgba(170, 0, 255, 0.5),
+        transparent
+    );
+
+    filter: blur(5px);
+
+    transform: skewX(-20deg);
+
+    pointer-events: none;
+
+    animation: rainbowSweep 3s linear infinite;
+}
+
+
+/* 🌈 এক প্রান্ত → অন্য প্রান্ত */
+@keyframes rainbowSweep {
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 150%;
+        opacity: 0;
+    }
+}
+
+.ndigo-logo {
+    position: relative;
+    display: inline-block;
+    padding: 40px 20px;
+    overflow: hidden;
+    background: #020617;
+}
+
+/* 🌌 Animated radiation */
+.ndigo-logo::before {
+    content: "";
+    position: absolute;
+    inset: -80%;
+
+    background: conic-gradient(
+        from 0deg,
+        transparent,
+        rgba(0, 80, 255, 0.15),
+        rgba(80, 0, 255, 0.45),
+        rgba(0, 200, 255, 0.25),
+        transparent,
+        rgba(100, 0, 255, 0.4),
+        transparent
+    );
+
+    filter: blur(20px);
+
+    animation: radiation 7s linear infinite;
+}
+
+/* 🌈 Moving rainbow light */
+.ndigo-logo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 180, 255, 0.25),
+        rgba(120, 0, 255, 0.35),
+        rgba(255, 0, 200, 0.25),
+        rgba(0, 220, 255, 0.3),
+        transparent
+    );
+
+    background-size: 300% 100%;
+    mix-blend-mode: screen;
+
+    animation: rainbowWave 4s linear infinite;
+}
+
+
+/* ✨ NDIGO TEXT */
+.ndigo-logo span {
+    position: relative;
+    z-index: 2;
+
+    display: block;
+
+    font-family: Arial, sans-serif;
+    font-size: clamp(50px, 12vw, 130px);
+    font-weight: 900;
+    letter-spacing: 5px;
+
+    background: linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #bdeaff 15%,
+        #247bff 35%,
+        #3014c9 55%,
+        #8f4dff 72%,
+        #e9faff 88%,
+        #258cff 100%
+    );
+
+    background-size: 300% 300%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    -webkit-text-stroke: 2px rgba(120, 190, 255, 0.7);
+
+    filter:
+        drop-shadow(0 0 4px #49aaff)
+        drop-shadow(0 0 12px rgba(45, 100, 255, 0.8))
+        drop-shadow(0 0 25px rgba(100, 40, 255, 0.6));
+
+    animation:
+        ndigoColor 4s linear infinite,
+        ndigoGlow 2.5s ease-in-out infinite,
+        ndigoFloat 5s ease-in-out infinite;
+}
+
+
+/* 🌈 Text color movement */
+@keyframes ndigoColor {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+
+/* 💙 Text glow pulse */
+@keyframes ndigoGlow {
+    0%,
+    100% {
+        filter:
+            drop-shadow(0 0 4px #49aaff)
+            drop-shadow(0 0 12px rgba(45, 100, 255, 0.7))
+            drop-shadow(0 0 20px rgba(100, 40, 255, 0.45));
+    }
+
+    50% {
+        filter:
+            drop-shadow(0 0 8px #00d9ff)
+            drop-shadow(0 0 22px #287cff)
+            drop-shadow(0 0 42px #763cff);
+    }
+}
+
+
+/* 🌊 Very subtle movement */
+@keyframes ndigoFloat {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.015);
+    }
+}
+
+
+/* 🌌 Rotating radiation */
+@keyframes radiation {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.08);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+
+/* 🌈 Light sweeping across */
+@keyframes rainbowWave {
+    0% {
+        background-position: -300% 50%;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.7;
+    }
+
+    50% {
+        background-position: 0% 50%;
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 0.7;
+    }
+
+    100% {
+        background-position: 300% 50%;
+        opacity: 0;
+    }
+}
+
+
+/* ==========================================================
+   EDUCATIONWEB GLOBAL SETTINGS
+   Automatically installed by Settings System
+   ========================================================== */
+
+:root {
+    --reading-width: 900px;
+    --ew-accent: #2997ff;
+    --ew-accent-light: #63b6ff;
+}
+
+
+/* ==========================================================
+   LIGHT THEME
+   ========================================================== */
+
+body.light-theme {
+    background: #f3f7fb !important;
+    color: #172333 !important;
+}
+
+body.light-theme .topbar,
+body.light-theme .navbar {
+    background: rgba(255, 255, 255, 0.96) !important;
+    border-color: #d8e1ea !important;
+}
+
+body.light-theme .sidebar {
+    background: #ffffff !important;
+    border-color: #d8e1ea !important;
+}
+
+body.light-theme .menu-button {
+    background: #ffffff !important;
+    border-color: #d1dce7 !important;
+}
+
+body.light-theme .menu-button span {
+    background: #172333 !important;
+}
+
+body.light-theme .settings-section,
+body.light-theme .policy-card,
+body.light-theme .content-box,
+body.light-theme .feature,
+body.light-theme .subjects,
+body.light-theme .hero,
+body.light-theme .settings-hero {
+    background: #ffffff !important;
+    border-color: #dbe4ed !important;
+}
+
+body.light-theme .side-button {
+    color: #46586c !important;
+}
+
+body.light-theme .side-button:hover {
+    background: #edf5fc !important;
+}
+
+body.light-theme .side-button.active {
+    background: #e3f2ff !important;
+    color: #0876c9 !important;
+}
+
+body.light-theme p {
+    color: #53667a;
+}
+
+
+/* ==========================================================
+   ACCENT COLORS
+   ========================================================== */
+
+body.accent-purple {
+    --ew-accent: #9b6cff;
+    --ew-accent-light: #c1a5ff;
+}
+
+body.accent-green {
+    --ew-accent: #22c58b;
+    --ew-accent-light: #65e2b2;
+}
+
+body.accent-orange {
+    --ew-accent: #ff9d3d;
+    --ew-accent-light: #ffc078;
+}
+
+
+/* Common accent elements */
+
+body.accent-purple .logo span,
+body.accent-purple .hero-label,
+body.accent-purple .section-icon,
+body.accent-purple .zoom-controls span {
+    color: var(--ew-accent) !important;
+}
+
+body.accent-green .logo span,
+body.accent-green .hero-label,
+body.accent-green .section-icon,
+body.accent-green .zoom-controls span {
+    color: var(--ew-accent) !important;
+}
+
+body.accent-orange .logo span,
+body.accent-orange .hero-label,
+body.accent-orange .section-icon,
+body.accent-orange .zoom-controls span {
+    color: var(--ew-accent) !important;
+}
+
+
+/* ==========================================================
+   COMPACT MODE
+   ========================================================== */
+
+body.compact .setting-row {
+    min-height: 58px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+body.compact .policy-card {
+    padding: 18px !important;
+}
+
+body.compact .feature {
+    padding: 16px !important;
+}
+
+
+/* ==========================================================
+   LARGE BUTTONS
+   ========================================================== */
+
+body.large-buttons button,
+body.large-buttons .side-button {
+    min-height: 46px;
+}
+
+body.large-buttons .menu-button {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+
+/* ==========================================================
+   HIGH CONTRAST
+   ========================================================== */
+
+body.high-contrast {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.high-contrast * {
+    border-color: #777777 !important;
+}
+
+body.high-contrast p,
+body.high-contrast span {
+    color: #eeeeee;
+}
+
+body.high-contrast a {
+    color: #66c2ff !important;
+}
+
+
+/* ==========================================================
+   FOCUS MODE
+   ========================================================== */
+
+body.focus-mode .overlay-content,
+body.focus-mode .content-box,
+body.focus-mode .policy-card {
+    box-shadow: none !important;
+}
+
+body.focus-mode .topbar {
+    opacity: 0.9;
+}
+
+
+/* ==========================================================
+   REDUCE MOTION
+   ========================================================== */
+
+body.reduce-motion *,
+body.reduce-motion *::before,
+body.reduce-motion *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+}
+
+
+/* ==========================================================
+   READING WIDTH
+   ========================================================== */
+
+body {
+    --reading-width: 900px;
+}
+
+
+/* ==========================================================
+   SYSTEM SAFETY
+   ========================================================== */
+
+html {
+    max-width: 100%;
+}
+
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}

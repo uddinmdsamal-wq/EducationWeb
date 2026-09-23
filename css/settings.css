@@ -1,0 +1,1092 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #050b14;
+    color: #e8f1ff;
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* ================= TOPBAR ================= */
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    height: 68px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 20px;
+
+    background: rgba(5, 11, 20, 0.94);
+
+    border-bottom: 1px solid #17283d;
+
+    backdrop-filter: blur(12px);
+}
+
+
+/* ================= MENU BUTTON ================= */
+
+.menu-button {
+    width: 44px;
+    height: 44px;
+
+    padding: 9px;
+
+    border: 1px solid #243850;
+    border-radius: 10px;
+
+    background: #0b1523;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+
+    cursor: pointer;
+}
+
+.menu-button span {
+    display: block;
+
+    width: 100%;
+    height: 2px;
+
+    border-radius: 10px;
+
+    background: #dcecff;
+
+    transition: 0.2s ease;
+}
+
+.menu-button:hover {
+    border-color: #2997ff;
+    background: #101e30;
+}
+
+
+/* ================= LOGO ================= */
+
+.logo {
+    margin-left: 14px;
+
+    font-size: 19px;
+    font-weight: 800;
+
+    letter-spacing: -0.3px;
+}
+
+.logo span {
+    color: #2997ff;
+}
+
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 285px;
+    height: 100vh;
+
+    z-index: 300;
+
+    padding: 18px;
+
+    background: #08111d;
+
+    border-right: 1px solid #1b3048;
+
+    transform: translateX(-100%);
+
+    transition: transform 0.25s ease;
+
+    overflow-y: auto;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+
+/* ================= SIDEBAR HEADER ================= */
+
+.sidebar-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 24px;
+}
+
+.sidebar-title {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.close-button {
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid #263b53;
+    border-radius: 9px;
+
+    background: #101c2b;
+
+    color: #dcecff;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+.close-button:hover {
+    background: #17283b;
+}
+
+
+/* ================= SIDEBAR LINKS ================= */
+
+.sidebar-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.side-button {
+    display: block;
+
+    padding: 14px 15px;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+    color: #c8d7e8;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition:
+        background 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease;
+}
+
+.side-button:hover {
+    color: white;
+
+    background: #102035;
+
+    border-color: #213b59;
+}
+
+.side-button.active {
+    color: #63b6ff;
+
+    background: #0c2239;
+
+    border-color: #175486;
+}
+
+
+/* ================= OVERLAY ================= */
+
+.overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 250;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+.overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* ================= MAIN ================= */
+
+.settings-container {
+    width: min(900px, calc(100% - 30px));
+
+    margin: 0 auto;
+
+    padding: 45px 0 70px;
+}
+
+
+/* ================= HERO ================= */
+
+.settings-hero {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    padding: 32px;
+
+    margin-bottom: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0a1727,
+            #08111d
+        );
+
+    border: 1px solid #1b3048;
+
+    border-radius: 18px;
+}
+
+.settings-icon {
+    width: 65px;
+    height: 65px;
+
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 15px;
+
+    background: #0d2b47;
+
+    border: 1px solid #1e5d91;
+
+    font-size: 30px;
+}
+
+.hero-label {
+    margin-bottom: 7px;
+
+    color: #45aaff;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.settings-hero h1 {
+    margin: 0;
+
+    font-size: clamp(30px, 5vw, 42px);
+
+    letter-spacing: -1px;
+}
+
+.settings-hero p {
+    margin: 8px 0 0;
+
+    color: #93a9bf;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+}
+
+
+/* ================= SECTION ================= */
+
+.settings-section {
+    margin-bottom: 20px;
+
+    background: #09131f;
+
+    border: 1px solid #182c42;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+}
+
+
+/* ================= SECTION HEADING ================= */
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 23px 24px;
+
+    border-bottom: 1px solid #17283b;
+}
+
+.section-icon {
+    width: 43px;
+    height: 43px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 10px;
+
+    background: #0d2136;
+
+    border: 1px solid #1a3c5c;
+
+    font-size: 20px;
+}
+
+.section-heading h2 {
+    margin: 0;
+
+    font-size: 18px;
+}
+
+.section-heading p {
+    margin: 4px 0 0;
+
+    color: #778da5;
+
+    font-size: 13px;
+}
+
+
+/* ================= SETTING ROW ================= */
+
+.setting-row {
+    min-height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding: 18px 24px;
+
+    border-bottom: 1px solid #142638;
+}
+
+.setting-row:last-child {
+    border-bottom: 0;
+}
+
+.setting-info {
+    min-width: 0;
+}
+
+.setting-info h3 {
+    margin: 0 0 5px;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.setting-info p {
+    margin: 0;
+
+    color: #71869d;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* ================= SELECT ================= */
+
+select {
+    min-width: 130px;
+
+    padding: 10px 13px;
+
+    border: 1px solid #29425d;
+    border-radius: 9px;
+
+    background: #0c1928;
+    color: #dcecff;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+select:focus {
+    border-color: #2997ff;
+}
+
+
+/* ================= SWITCH ================= */
+
+.switch {
+    position: relative;
+
+    width: 48px;
+    height: 27px;
+
+    flex-shrink: 0;
+}
+
+.switch input {
+    opacity: 0;
+
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+
+    inset: 0;
+
+    cursor: pointer;
+
+    background: #1b2d41;
+
+    border: 1px solid #30465e;
+
+    border-radius: 30px;
+
+    transition: 0.2s ease;
+}
+
+.slider::before {
+    content: "";
+
+    position: absolute;
+
+    width: 19px;
+    height: 19px;
+
+    left: 3px;
+    top: 3px;
+
+    border-radius: 50%;
+
+    background: #9fb1c3;
+
+    transition: 0.2s ease;
+}
+
+.switch input:checked + .slider {
+    background: #1269a8;
+
+    border-color: #218bd4;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(21px);
+
+    background: white;
+}
+
+
+/* ================= TEXT ZOOM ================= */
+
+.zoom-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.zoom-controls button {
+    width: 40px;
+    height: 36px;
+
+    border: 1px solid #29425d;
+    border-radius: 8px;
+
+    background: #0c1928;
+    color: #dcecff;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.zoom-controls button:hover {
+    border-color: #2997ff;
+    background: #10253a;
+}
+
+.zoom-controls span {
+    min-width: 55px;
+
+    text-align: center;
+
+    color: #65b8ff;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* ================= DANGER ================= */
+
+.danger-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-top: 20px;
+    padding: 25px;
+
+    background: #120d10;
+
+    border: 1px solid #39232a;
+
+    border-radius: 16px;
+}
+
+.danger-section h2 {
+    margin: 0 0 7px;
+
+    font-size: 17px;
+}
+
+.danger-section p {
+    margin: 0;
+
+    max-width: 600px;
+
+    color: #9d8189;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+.reset-button {
+    flex-shrink: 0;
+
+    padding: 11px 17px;
+
+    border: 1px solid #743847;
+    border-radius: 9px;
+
+    background: #241117;
+
+    color: #ff9dad;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.reset-button:hover {
+    background: #32151e;
+    border-color: #a34b60;
+}
+
+
+/* ================= FOOTER ================= */
+
+.settings-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+
+    padding: 35px 10px 0;
+
+    text-align: center;
+
+    color: #63788e;
+
+    font-size: 12px;
+}
+
+.settings-footer strong {
+    color: #9cb2c9;
+}
+
+
+/* ================= COMPACT MODE ================= */
+
+body.compact .setting-row {
+    min-height: 60px;
+
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+body.compact .settings-section {
+    margin-bottom: 13px;
+}
+
+
+/* ================= LARGE BUTTONS ================= */
+
+body.large-buttons .menu-button {
+    width: 50px;
+    height: 50px;
+}
+
+body.large-buttons .side-button {
+    padding: 17px;
+}
+
+body.large-buttons select {
+    padding: 13px 15px;
+}
+
+
+/* ================= HIGH CONTRAST ================= */
+
+body.high-contrast {
+    background: #000;
+    color: #fff;
+}
+
+body.high-contrast .settings-section,
+body.high-contrast .settings-hero {
+    background: #050505;
+    border-color: #777;
+}
+
+body.high-contrast .setting-info p,
+body.high-contrast .section-heading p {
+    color: #d0d0d0;
+}
+
+
+/* ================= FOCUS MODE ================= */
+
+body.focus-mode .topbar {
+    opacity: 0.82;
+}
+
+body.focus-mode .settings-section {
+    border-color: #233a52;
+}
+
+
+/* ================= REDUCED MOTION ================= */
+
+body.reduce-motion *,
+body.reduce-motion *::before,
+body.reduce-motion *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+}
+
+
+/* ================= LIGHT THEME ================= */
+
+body.light-theme {
+    background: #f3f7fb;
+
+    color: #162333;
+}
+
+body.light-theme .topbar {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: #d8e1ea;
+}
+
+body.light-theme .logo {
+    color: #172333;
+}
+
+body.light-theme .menu-button {
+    background: #fff;
+    border-color: #d1dce7;
+}
+
+body.light-theme .menu-button span {
+    background: #172333;
+}
+
+body.light-theme .settings-hero,
+body.light-theme .settings-section {
+    background: #fff;
+    border-color: #dbe4ed;
+}
+
+body.light-theme .section-heading,
+body.light-theme .setting-row {
+    border-color: #e4eaf0;
+}
+
+body.light-theme .setting-info p,
+body.light-theme .section-heading p {
+    color: #647487;
+}
+
+body.light-theme select,
+body.light-theme .zoom-controls button {
+    background: #f7f9fb;
+    color: #182536;
+    border-color: #cbd7e3;
+}
+
+body.light-theme .sidebar {
+    background: #fff;
+    border-color: #d8e1ea;
+}
+
+body.light-theme .sidebar-title {
+    color: #182536;
+}
+
+body.light-theme .side-button {
+    color: #46586c;
+}
+
+body.light-theme .side-button:hover {
+    background: #edf5fc;
+}
+
+body.light-theme .side-button.active {
+    background: #e3f2ff;
+    color: #0876c9;
+}
+
+
+/* ================= ACCENT COLORS ================= */
+
+body.accent-purple .hero-label,
+body.accent-purple .zoom-controls span,
+body.accent-purple .logo span {
+    color: #b78cff;
+}
+
+body.accent-purple .switch input:checked + .slider {
+    background: #7040b5;
+}
+
+body.accent-green .hero-label,
+body.accent-green .zoom-controls span,
+body.accent-green .logo span {
+    color: #43d19b;
+}
+
+body.accent-green .switch input:checked + .slider {
+    background: #168a62;
+}
+
+body.accent-orange .hero-label,
+body.accent-orange .zoom-controls span,
+body.accent-orange .logo span {
+    color: #ffab55;
+}
+
+body.accent-orange .switch input:checked + .slider {
+    background: #b96619;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 650px) {
+
+    .topbar {
+        height: 62px;
+        padding: 0 14px;
+    }
+
+    .settings-container {
+        width: min(100% - 20px, 900px);
+
+        padding-top: 25px;
+    }
+
+    .settings-hero {
+        align-items: flex-start;
+
+        padding: 22px;
+
+        gap: 14px;
+    }
+
+    .settings-icon {
+        width: 52px;
+        height: 52px;
+
+        font-size: 23px;
+    }
+
+    .settings-hero h1 {
+        font-size: 30px;
+    }
+
+    .section-heading {
+        padding: 19px;
+    }
+
+    .setting-row {
+        align-items: flex-start;
+
+        padding: 17px 19px;
+    }
+
+    .setting-info {
+        padding-right: 5px;
+    }
+
+    select {
+        min-width: 105px;
+    }
+
+    .danger-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .reset-button {
+        width: 100%;
+    }
+}
+
+
+/* ==========================================================
+   EDUCATIONWEB GLOBAL SETTINGS
+   Automatically installed by Settings System
+   ========================================================== */
+
+:root {
+    --reading-width: 900px;
+    --ew-accent: #2997ff;
+    --ew-accent-light: #63b6ff;
+}
+
+
+/* ==========================================================
+   LIGHT THEME
+   ========================================================== */
+
+body.light-theme {
+    background: #f3f7fb !important;
+    color: #172333 !important;
+}
+
+body.light-theme .topbar,
+body.light-theme .navbar {
+    background: rgba(255, 255, 255, 0.96) !important;
+    border-color: #d8e1ea !important;
+}
+
+body.light-theme .sidebar {
+    background: #ffffff !important;
+    border-color: #d8e1ea !important;
+}
+
+body.light-theme .menu-button {
+    background: #ffffff !important;
+    border-color: #d1dce7 !important;
+}
+
+body.light-theme .menu-button span {
+    background: #172333 !important;
+}
+
+body.light-theme .settings-section,
+body.light-theme .policy-card,
+body.light-theme .content-box,
+body.light-theme .feature,
+body.light-theme .subjects,
+body.light-theme .hero,
+body.light-theme .settings-hero {
+    background: #ffffff !important;
+    border-color: #dbe4ed !important;
+}
+
+body.light-theme .side-button {
+    color: #46586c !important;
+}
+
+body.light-theme .side-button:hover {
+    background: #edf5fc !important;
+}
+
+body.light-theme .side-button.active {
+    background: #e3f2ff !important;
+    color: #0876c9 !important;
+}
+
+body.light-theme p {
+    color: #53667a;
+}
+
+
+/* ==========================================================
+   ACCENT COLORS
+   ========================================================== */
+
+body.accent-purple {
+    --ew-accent: #9b6cff;
+    --ew-accent-light: #c1a5ff;
+}
+
+body.accent-green {
+    --ew-accent: #22c58b;
+    --ew-accent-light: #65e2b2;
+}
+
+body.accent-orange {
+    --ew-accent: #ff9d3d;
+    --ew-accent-light: #ffc078;
+}
+
+
+/* Common accent elements */
+
+body.accent-purple .logo span,
+body.accent-purple .hero-label,
+body.accent-purple .section-icon,
+body.accent-purple .zoom-controls span {
+    color: var(--ew-accent) !important;
+}
+
+body.accent-green .logo span,
+body.accent-green .hero-label,
+body.accent-green .section-icon,
+body.accent-green .zoom-controls span {
+    color: var(--ew-accent) !important;
+}
+
+body.accent-orange .logo span,
+body.accent-orange .hero-label,
+body.accent-orange .section-icon,
+body.accent-orange .zoom-controls span {
+    color: var(--ew-accent) !important;
+}
+
+
+/* ==========================================================
+   COMPACT MODE
+   ========================================================== */
+
+body.compact .setting-row {
+    min-height: 58px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+body.compact .policy-card {
+    padding: 18px !important;
+}
+
+body.compact .feature {
+    padding: 16px !important;
+}
+
+
+/* ==========================================================
+   LARGE BUTTONS
+   ========================================================== */
+
+body.large-buttons button,
+body.large-buttons .side-button {
+    min-height: 46px;
+}
+
+body.large-buttons .menu-button {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+
+/* ==========================================================
+   HIGH CONTRAST
+   ========================================================== */
+
+body.high-contrast {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.high-contrast * {
+    border-color: #777777 !important;
+}
+
+body.high-contrast p,
+body.high-contrast span {
+    color: #eeeeee;
+}
+
+body.high-contrast a {
+    color: #66c2ff !important;
+}
+
+
+/* ==========================================================
+   FOCUS MODE
+   ========================================================== */
+
+body.focus-mode .overlay-content,
+body.focus-mode .content-box,
+body.focus-mode .policy-card {
+    box-shadow: none !important;
+}
+
+body.focus-mode .topbar {
+    opacity: 0.9;
+}
+
+
+/* ==========================================================
+   REDUCE MOTION
+   ========================================================== */
+
+body.reduce-motion *,
+body.reduce-motion *::before,
+body.reduce-motion *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+}
+
+
+/* ==========================================================
+   READING WIDTH
+   ========================================================== */
+
+body {
+    --reading-width: 900px;
+}
+
+
+/* ==========================================================
+   SYSTEM SAFETY
+   ========================================================== */
+
+html {
+    max-width: 100%;
+}
+
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}

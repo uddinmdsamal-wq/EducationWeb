@@ -1,0 +1,2 @@
+// JavaScript file for Architecture
+

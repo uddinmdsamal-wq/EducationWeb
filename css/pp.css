@@ -1,0 +1,931 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #168cff #050b14;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+
+    overflow-x: hidden;
+
+    background: #050b14;
+    color: #e8f1ff;
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+}
+
+
+/* =================================
+   SCROLLBAR
+================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050b14;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #168cff;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #35a5ff;
+}
+
+
+/* =================================
+   TOP BAR
+================================= */
+
+.topbar {
+    width: 100%;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 18px;
+
+    background: rgba(5, 11, 20, 0.96);
+
+    border-bottom: 1px solid #182b40;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+}
+
+
+/* =================================
+   MENU
+================================= */
+
+.menu-button {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 9px;
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.menu-button span {
+    width: 23px;
+    height: 2px;
+
+    display: block;
+
+    background: #dcecff;
+
+    border-radius: 5px;
+}
+
+.menu-button:hover {
+    background: #0d1d30;
+}
+
+
+/* =================================
+   LOGO
+================================= */
+
+.logo {
+    margin-left: 13px;
+
+    color: white;
+
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.logo span {
+    color: #168cff;
+}
+
+
+/* =================================
+   SIDEBAR
+================================= */
+
+.sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 280px;
+    height: 100vh;
+
+    padding: 20px;
+
+    background: #07111f;
+
+    border-right: 1px solid #1b334c;
+
+    z-index: 2000;
+
+    transform: translateX(-100%);
+
+    transition:
+        transform 0.28s
+        cubic-bezier(.4, 0, .2, 1);
+
+    overflow-y: auto;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 28px;
+}
+
+.sidebar-title {
+    color: white;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.close-button {
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid #1b334c;
+    border-radius: 8px;
+
+    background: #0a1828;
+
+    color: #9db4cc;
+
+    font-size: 21px;
+
+    cursor: pointer;
+}
+
+.close-button:hover {
+    background: #10243a;
+    color: white;
+}
+
+
+/* =================================
+   SIDEBAR BUTTONS
+================================= */
+
+.sidebar-buttons {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.side-button {
+    width: 100%;
+    min-height: 46px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 14px;
+
+    border: 1px solid #172d44;
+    border-radius: 8px;
+
+    background: #0a1726;
+
+    color: #dbeaff;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.15s ease;
+}
+
+.side-button:hover {
+    background: #0e2135;
+
+    border-color: #245d8d;
+
+    transform: translateX(3px);
+}
+
+.side-button.active {
+    background: #0e2135;
+
+    border-color: #168cff;
+
+    color: white;
+}
+
+
+/* =================================
+   OVERLAY
+================================= */
+
+.overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    z-index: 1500;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+.overlay.show {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* =================================
+   MAIN CONTAINER
+================================= */
+
+.container {
+    width: min(
+        900px,
+        calc(100% - 30px)
+    );
+
+    margin: 0 auto;
+
+    padding-bottom: 80px;
+}
+
+
+/* =================================
+   HERO
+================================= */
+
+.hero {
+    padding: 65px 0 45px;
+
+    border-bottom:
+        1px solid #14263a;
+}
+
+.hero-icon {
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    border: 1px solid #19466c;
+    border-radius: 12px;
+
+    background: #081a2b;
+
+    font-size: 25px;
+}
+
+.hero-label {
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    border: 1px solid #17456c;
+    border-radius: 7px;
+
+    background: #081a2c;
+
+    color: #5cb2ff;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
+}
+
+.hero h1 {
+    margin: 18px 0 14px;
+
+    color: #ffffff;
+
+    font-size: clamp(
+        40px,
+        7vw,
+        62px
+    );
+
+    line-height: 1.05;
+
+    letter-spacing: -2.5px;
+}
+
+.hero p {
+    max-width: 720px;
+
+    margin: 0;
+
+    color: #8ca2ba;
+
+    font-size: 16px;
+
+    line-height: 1.75;
+}
+
+.updated {
+    margin-top: 20px;
+
+    color: #526a83;
+
+    font-size: 12px;
+}
+
+
+/* =================================
+   POLICY CARD
+================================= */
+
+.policy-card {
+    position: relative;
+
+    margin-top: 18px;
+
+    padding: 30px;
+
+    border:
+        1px solid #172c43;
+
+    border-radius: 12px;
+
+    background: #08131f;
+}
+
+.section-number {
+    margin-bottom: 13px;
+
+    color: #168cff;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.policy-card h2 {
+    margin: 0 0 17px;
+
+    color: #f2f7ff;
+
+    font-size: 23px;
+
+    letter-spacing: -0.4px;
+}
+
+.policy-card p {
+    margin: 0 0 17px;
+
+    color: #8ca0b7;
+
+    font-size: 15px;
+
+    line-height: 1.85;
+}
+
+.policy-card p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =================================
+   FEATURE GRID
+================================= */
+
+.feature-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+.feature {
+    padding: 18px;
+
+    border: 1px solid #172d44;
+
+    border-radius: 9px;
+
+    background: #091725;
+}
+
+.feature span {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 22px;
+}
+
+.feature strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #dcecff;
+
+    font-size: 14px;
+}
+
+.feature small {
+    color: #617991;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =================================
+   HIGHLIGHT
+================================= */
+
+.highlight {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-top: 25px;
+
+    padding: 18px;
+
+    border-left:
+        3px solid #168cff;
+
+    background: #091b2c;
+
+    border-radius: 0 8px 8px 0;
+}
+
+.highlight strong {
+    color: #63b8ff;
+
+    font-size: 13px;
+}
+
+.highlight span {
+    color: #839bb4;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =================================
+   CONTROL LIST
+================================= */
+
+.control-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+    margin-top: 22px;
+}
+
+.control-list div {
+    padding: 12px 14px;
+
+    border:
+        1px solid #152b41;
+
+    border-radius: 8px;
+
+    background: #091724;
+
+    color: #849ab1;
+
+    font-size: 13px;
+}
+
+.control-list span {
+    margin-right: 8px;
+
+    color: #23d18b;
+
+    font-weight: bold;
+}
+
+
+/* =================================
+   FOOTER PRIVACY
+================================= */
+
+.policy-footer {
+    margin-top: 25px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    border:
+        1px solid #172c43;
+
+    border-radius: 12px;
+
+    background: #07111d;
+}
+
+.policy-footer > span {
+    font-size: 27px;
+}
+
+.policy-footer strong {
+    display: block;
+
+    margin-top: 10px;
+
+    color: #dcecff;
+
+    font-size: 15px;
+}
+
+.policy-footer p {
+    margin: 8px 0 0;
+
+    color: #627991;
+
+    font-size: 12px;
+}
+
+
+/* =================================
+   FOOTER
+================================= */
+
+footer {
+    padding: 0 0 35px;
+
+    text-align: center;
+
+    color: #536a83;
+
+    font-size: 12px;
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 650px) {
+
+    .topbar {
+        height: 58px;
+
+        padding: 0 10px;
+    }
+
+    .container {
+        width:
+            calc(100% - 22px);
+    }
+
+    .hero {
+        padding:
+            45px 0 35px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+
+        letter-spacing: -1.8px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .policy-card {
+        padding: 22px;
+    }
+
+    .policy-card h2 {
+        font-size: 20px;
+    }
+
+    .policy-card p {
+        font-size: 14px;
+
+        line-height: 1.8;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        width: 82%;
+        max-width: 300px;
+    }
+}
+
+
+/* =================================
+   REDUCED MOTION
+================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+
+/* ==========================================================
+   EDUCATIONWEB GLOBAL SETTINGS
+   Automatically installed by Settings System
+   ========================================================== */
+
+:root {
+    --reading-width: 900px;
+    --ew-accent: #2997ff;
+    --ew-accent-light: #63b6ff;
+}
+
+
+/* ==========================================================
+   LIGHT THEME
+   ========================================================== */
+
+body.light-theme {
+    background: #f3f7fb !important;
+    color: #172333 !important;
+}
+
+body.light-theme .topbar,
+body.light-theme .navbar {
+    background: rgba(255, 255, 255, 0.96) !important;
+    border-color: #d8e1ea !important;
+}
+
+body.light-theme .sidebar {
+    background: #ffffff !important;
+    border-color: #d8e1ea !important;
+}
+
+body.light-theme .menu-button {
+    background: #ffffff !important;
+    border-color: #d1dce7 !important;
+}
+
+body.light-theme .menu-button span {
+    background: #172333 !important;
+}
+
+body.light-theme .settings-section,
+body.light-theme .policy-card,
+body.light-theme .content-box,
+body.light-theme .feature,
+body.light-theme .subjects,
+body.light-theme .hero,
+body.light-theme .settings-hero {
+    background: #ffffff !important;
+    border-color: #dbe4ed !important;
+}
+
+body.light-theme .side-button {
+    color: #46586c !important;
+}
+
+body.light-theme .side-button:hover {
+    background: #edf5fc !important;
+}
+
+body.light-theme .side-button.active {
+    background: #e3f2ff !important;
+    color: #0876c9 !important;
+}
+
+body.light-theme p {
+    color: #53667a;
+}
+
+
+/* ==========================================================
+   ACCENT COLORS
+   ========================================================== */
+
+body.accent-purple {
+    --ew-accent: #9b6cff;
+    --ew-accent-light: #c1a5ff;
+}
+
+body.accent-green {
+    --ew-accent: #22c58b;
+    --ew-accent-light: #65e2b2;
+}
+
+body.accent-orange {
+    --ew-accent: #ff9d3d;
+    --ew-accent-light: #ffc078;
+}
+
+
+/* Common accent elements */
+
+body.accent-purple .logo span,
+body.accent-purple .hero-label,
+body.accent-purple .section-icon,
+body.accent-purple .zoom-controls span {
+    color: var(--ew-accent) !important;
+}
+
+body.accent-green .logo span,
+body.accent-green .hero-label,
+body.accent-green .section-icon,
+body.accent-green .zoom-controls span {
+    color: var(--ew-accent) !important;
+}
+
+body.accent-orange .logo span,
+body.accent-orange .hero-label,
+body.accent-orange .section-icon,
+body.accent-orange .zoom-controls span {
+    color: var(--ew-accent) !important;
+}
+
+
+/* ==========================================================
+   COMPACT MODE
+   ========================================================== */
+
+body.compact .setting-row {
+    min-height: 58px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+body.compact .policy-card {
+    padding: 18px !important;
+}
+
+body.compact .feature {
+    padding: 16px !important;
+}
+
+
+/* ==========================================================
+   LARGE BUTTONS
+   ========================================================== */
+
+body.large-buttons button,
+body.large-buttons .side-button {
+    min-height: 46px;
+}
+
+body.large-buttons .menu-button {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+
+/* ==========================================================
+   HIGH CONTRAST
+   ========================================================== */
+
+body.high-contrast {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.high-contrast * {
+    border-color: #777777 !important;
+}
+
+body.high-contrast p,
+body.high-contrast span {
+    color: #eeeeee;
+}
+
+body.high-contrast a {
+    color: #66c2ff !important;
+}
+
+
+/* ==========================================================
+   FOCUS MODE
+   ========================================================== */
+
+body.focus-mode .overlay-content,
+body.focus-mode .content-box,
+body.focus-mode .policy-card {
+    box-shadow: none !important;
+}
+
+body.focus-mode .topbar {
+    opacity: 0.9;
+}
+
+
+/* ==========================================================
+   REDUCE MOTION
+   ========================================================== */
+
+body.reduce-motion *,
+body.reduce-motion *::before,
+body.reduce-motion *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+}
+
+
+/* ==========================================================
+   READING WIDTH
+   ========================================================== */
+
+body {
+    --reading-width: 900px;
+}
+
+
+/* ==========================================================
+   SYSTEM SAFETY
+   ========================================================== */
+
+html {
+    max-width: 100%;
+}
+
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
